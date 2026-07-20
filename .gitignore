@@ -48,6 +48,9 @@ captures/
 # Google Services (if applicable)
 google-services.json
 
+# JoyCode
+.joycode/
+
 # OS-specific files
 .DS_Store
 Thumbs.db
