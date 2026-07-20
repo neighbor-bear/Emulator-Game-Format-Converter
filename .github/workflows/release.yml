@@ -1,0 +1,78 @@
+name: Build & Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug
+
+      - name: Build Release APK
+        run: ./gradlew assembleRelease
+
+      - name: Get version info
+        id: version
+        run: |
+          VERSION_NAME=$(grep 'versionName' app/build.gradle | sed 's/.*versionName[[:space:]]*["'"'"']//;s/["'"'"']//')
+          echo "version=$VERSION_NAME" >> $GITHUB_OUTPUT
+          echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
+
+      - name: Rename APK files
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          DATE="${{ steps.version.outputs.date }}"
+          cp app/build/outputs/apk/debug/app-debug.apk "EmulatorGameFormatConverter-v${VERSION}-debug.apk"
+          cp app/build/outputs/apk/release/app-release.apk "EmulatorGameFormatConverter-v${VERSION}-release.apk"
+
+      - name: Delete previous release
+        uses: dev-drprasad/delete-tag-and-release@v1.1
+        with:
+          tag_name: latest
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_release: true
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "v${{ steps.version.outputs.version }} (${{ steps.version.outputs.date }})"
+          body: |
+            ## 🎮 模拟器游戏格式转换器 / Emulator Game Format Converter
+
+            **版本**: v${{ steps.version.outputs.version }}
+            **构建日期**: ${{ steps.version.outputs.date }}
+
+            ### 下载说明
+            - **release 版**: 经过代码混淆优化，体积更小，推荐日常使用
+            - **debug 版**: 包含调试信息，出现问题方便排查
+
+            ### 更新内容
+            请查看下方 Commit 记录
+          files: |
+            EmulatorGameFormatConverter-v${{ steps.version.outputs.version }}-debug.apk
+            EmulatorGameFormatConverter-v${{ steps.version.outputs.version }}-release.apk
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
