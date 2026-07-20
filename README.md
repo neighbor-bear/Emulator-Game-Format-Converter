@@ -1,8 +1,7 @@
-# 🎮 Emulator Game Format Converter / PSP游戏格式转换
+# 🎮 Emulator Game Format Converter / 模拟器游戏格式转换器
 
-一款 Android 平台的 PSP 游戏镜像格式转换工具，支持 ISO 与 CSO 格式之间的相互转换。
+一款 Android 平台的模拟器游戏镜像格式转换工具，目前支持PSP的 ISO 与 CSO 格式之间的相互转换，以后会逐步添加更多格式转换。
 
-An Android app for converting PSP game image formats between ISO and CSO.
 
 ## ✨ 功能特性
 
@@ -19,9 +18,9 @@ An Android app for converting PSP game image formats between ISO and CSO.
 
 ## 💡 灵感来源
 
-本项目的核心转换算法移植自 [CSOChef](https://github.com/RetroChef/csochef) —— 一个基于 Python 的 ISO/CSO 压缩解压工具。感谢 RetroChef 的开源贡献！
+本项目的核心转换算法移植自 [CSOChef](https://github.com/RetroChef/csochef) —— 一个基于 Python 的 ISO/CSO 压缩解压工具。感谢 RetroChef 大佬的开源贡献！
 
-CSOChef 是一个命令行工具，仅支持桌面平台（Windows/Linux/macOS）。本项目将其核心算法移植到 Android 平台，让用户可以直接在手机上完成 PSP 游戏格式的转换，无需借助电脑。
+CSOChef 是一个命令行工具，仅支持桌面平台（Windows/Linux/macOS）。本项目将其核心算法移植到 Android 平台，让用户可以直接在手机上完成模拟器游戏格式的转换，无需借助电脑。
 
 ## 🔧 技术细节
 
