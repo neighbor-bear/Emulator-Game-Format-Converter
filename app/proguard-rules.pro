@@ -1,0 +1,5 @@
+-keepattributes *Annotation*
+-keepattributes SourceFile,LineNumberTable
+-keep class com.pspyouxi.converter.** { *; }
+-dontwarn java.util.zip.**
+-dontwarn java.nio.**

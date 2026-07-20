@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PSP游戏格式转换</string>
+    <string name="select_folder">选择文件夹</string>
+    <string name="start_convert">开始转换</string>
+    <string name="output_format">输出格式</string>
+    <string name="format_iso">ISO（解压缩）</string>
+    <string name="format_cso">CSO（压缩）</string>
+    <string name="no_folder">未选择文件夹</string>
+    <string name="converting">转换中…</string>
+    <string name="convert_done">转换完成！</string>
+    <string name="convert_fail">转换失败</string>
+    <string name="permission_needed">需要存储权限才能访问文件</string>
+    <string name="no_files_found">所选文件夹中未找到可转换的文件</string>
+</resources>

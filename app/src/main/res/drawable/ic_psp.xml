@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- PSP body outline -->
+    <path
+        android:fillColor="#302B63"
+        android:strokeColor="#4FC3F7"
+        android:strokeWidth="2"
+        android:pathData="M20,40 Q20,30 30,30 L90,30 Q100,30 100,40 L100,80 Q100,90 90,90 L30,90 Q20,90 20,80 Z" />
+    <!-- Screen -->
+    <path
+        android:fillColor="#0F0C29"
+        android:strokeColor="#B388FF"
+        android:strokeWidth="1.5"
+        android:pathData="M32,42 L88,42 L88,72 L32,72 Z" />
+    <!-- D-pad left -->
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M25,55 L29,55 L29,52 L31,52 L31,55 L35,55 L35,57 L31,57 L31,60 L29,60 L29,57 L25,57 Z" />
+    <!-- Buttons right -->
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M87,54 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M83,58 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M91,58 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M87,62 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <!-- Center home button -->
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M58,82 m-4,0 a4,4 0 1,1 8,0 a4,4 0 1,1 -8,0" />
+    <!-- Analog sticks -->
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M26,46 m-3,0 a3,3 0 1,1 6,0 a3,3 0 1,1 -6,0" />
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M94,46 m-3,0 a3,3 0 1,1 6,0 a3,3 0 1,1 -6,0" />
+</vector>

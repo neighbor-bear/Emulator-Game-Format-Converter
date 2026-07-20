@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- PSP body -->
+    <path
+        android:fillColor="#302B63"
+        android:strokeColor="#4FC3F7"
+        android:strokeWidth="2.5"
+        android:pathData="M24,38 Q24,28 34,28 L74,28 Q84,28 84,38 L84,70 Q84,80 74,80 L34,80 Q24,80 24,70 Z" />
+    <!-- Screen -->
+    <path
+        android:fillColor="#0F0C29"
+        android:strokeColor="#B388FF"
+        android:strokeWidth="1.5"
+        android:pathData="M36,40 L72,40 L72,62 L36,62 Z" />
+    <!-- Screen glow text -->
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M42,48 L48,48 L48,50 L44,50 L44,52 L47,52 L47,54 L44,54 L44,56 L48,56 L48,58 L42,58 Z" />
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M50,48 L54,48 L54,58 L52,58 L52,50 L50,50 Z" />
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M56,48 L62,48 L62,50 L58,50 L58,52 L61,52 L61,54 L58,54 L58,58 L56,58 Z" />
+    <!-- D-pad -->
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M29,53 L31,53 L31,51 L33,51 L33,53 L35,53 L35,55 L33,55 L33,57 L31,57 L31,55 L29,55 Z" />
+    <!-- Action buttons (triangle, circle, cross, square) -->
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M76,50 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M73,54 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#4FC3F7"
+        android:pathData="M79,54 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M76,58 m-2,0 a2,2 0 1,1 4,0 a2,2 0 1,1 -4,0" />
+    <!-- Home button -->
+    <path
+        android:fillColor="#B388FF"
+        android:pathData="M54,74 m-4,0 a4,4 0 1,1 8,0 a4,4 0 1,1 -8,0" />
+</vector>
