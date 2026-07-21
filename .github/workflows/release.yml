@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -63,6 +66,7 @@ jobs:
           cp app/build/outputs/apk/release/app-release.apk "EmulatorGameFormatConverter-v${VERSION}-release.apk"
 
       - name: Delete previous release
+        continue-on-error: true
         uses: dev-drprasad/delete-tag-and-release@v1.1
         with:
           tag_name: latest
