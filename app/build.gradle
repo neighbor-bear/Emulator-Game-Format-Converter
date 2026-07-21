@@ -10,13 +10,14 @@ android {
         applicationId "com.pspyouxi.converter"
         minSdk 28
         targetSdk 35
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
     }
 
     buildTypes {
         release {
             minifyEnabled true
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {

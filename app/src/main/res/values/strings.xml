@@ -12,4 +12,6 @@
     <string name="convert_fail">转换失败</string>
     <string name="permission_needed">需要存储权限才能访问文件</string>
     <string name="no_files_found">所选文件夹中未找到可转换的文件</string>
+    <string name="nav_home">主页</string>
+    <string name="nav_settings">设置</string>
 </resources>

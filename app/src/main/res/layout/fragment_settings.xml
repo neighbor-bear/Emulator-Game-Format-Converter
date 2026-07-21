@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvSettingsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⚙️ 设置"
+        android:textSize="24sp"
+        android:textColor="@color/accent_blue"
+        android:fontFamily="sans-serif-bold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Settings Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/card_bg_gradient"
+        android:padding="24dp"
+        android:elevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSettingsTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Usage Guide Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnUsageGuide"
+            style="@style/RoundedButton.Blue"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:text="📖 使用说明"
+            android:textSize="16sp"
+            app:cornerRadius="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- About Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAbout"
+            style="@style/RoundedButton.Purple"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:text="📋 关于"
+            android:textSize="16sp"
+            android:layout_marginTop="16dp"
+            app:cornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@id/btnUsageGuide"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

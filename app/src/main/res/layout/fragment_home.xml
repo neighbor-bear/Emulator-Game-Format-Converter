@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient">
+
+    <!-- Title Bar -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎮 PSP游戏格式转换"
+        android:textSize="24sp"
+        android:textColor="@color/accent_blue"
+        android:fontFamily="sans-serif-bold"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ISO ↔ CSO 格式互转工具"
+        android:textSize="14sp"
+        android:textColor="#8892B0"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Main Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/card_bg_gradient"
+        android:padding="20dp"
+        android:elevation="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- PSP Icon -->
+        <ImageView
+            android:id="@+id/ivPsp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_psp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Permission Warning -->
+        <TextView
+            android:id="@+id/tvPermissionWarning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="⚠️ 需要授予所有文件访问权限才能读写游戏文件"
+            android:textSize="13sp"
+            android:textColor="#FF6B6B"
+            android:visibility="gone"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/ivPsp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPermission"
+            style="@style/RoundedButton.Blue"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:text="🔑 授予存储权限"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:layout_marginTop="4dp"
+            app:cornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tvPermissionWarning"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Folder Selection: path display in one line + select button -->
+        <TextView
+            android:id="@+id/tvFolderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📂 选择文件夹"
+            android:textSize="16sp"
+            android:textColor="@color/accent_purple"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/btnPermission"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvFolderPath"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:text="@string/no_folder"
+            android:textSize="13sp"
+            android:textColor="#8892B0"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="48dp"
+            android:background="@drawable/spinner_bg"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/tvFolderLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSelectFolder"
+            style="@style/RoundedButton.Blue"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:text="📁 选择文件夹"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp"
+            app:cornerRadius="12dp"
+            app:layout_constraintTop_toBottomOf="@id/tvFolderPath"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- File Selection Spinner (appears after folder is selected) -->
+        <TextView
+            android:id="@+id/tvFileLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💿 选择镜像文件"
+            android:textSize="16sp"
+            android:textColor="@color/accent_purple"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/btnSelectFolder"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerFiles"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/spinner_bg"
+            android:paddingStart="16dp"
+            android:paddingEnd="40dp"
+            android:popupBackground="#1A1A2E"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/tvFileLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Format Selection -->
+        <TextView
+            android:id="@+id/tvFormatLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔄 输出格式"
+            android:textSize="16sp"
+            android:textColor="@color/accent_purple"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/spinnerFiles"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerFormat"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/spinner_bg"
+            android:paddingStart="16dp"
+            android:paddingEnd="40dp"
+            android:popupBackground="#1A1A2E"
+            app:layout_constraintTop_toBottomOf="@id/tvFormatLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- File count info -->
+        <TextView
+            android:id="@+id/tvFileInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="13sp"
+            android:textColor="#8892B0"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/spinnerFormat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Convert Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConvert"
+            style="@style/RoundedButton.Purple"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:text="🚀 开始转换"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:enabled="false"
+            app:cornerRadius="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvFileInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Progress Section -->
+        <LinearLayout
+            android:id="@+id/progressSection"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/btnConvert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tvCurrentFile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:textColor="@color/accent_blue"
+                android:singleLine="true"
+                android:ellipsize="middle"
+                android:layout_marginBottom="4dp" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:progressDrawable="@drawable/progress_gradient"
+                android:max="100"
+                android:progress="0" />
+
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0%"
+                android:textSize="14sp"
+                android:textColor="@color/accent_blue"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:textColor="#8892B0"
+                android:gravity="center"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
