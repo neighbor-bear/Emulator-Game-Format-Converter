@@ -30,22 +30,12 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build Debug APK
-        run: ./gradlew assembleDebug
-
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
-      - name: Verify APK files exist
+      - name: Verify APK exists
         run: |
-          echo "Checking debug APK..."
-          ls -la app/build/outputs/apk/debug/ || true
-          echo "Checking release APK..."
           ls -la app/build/outputs/apk/release/ || true
-          if [ ! -f "app/build/outputs/apk/debug/app-debug.apk" ]; then
-            echo "ERROR: Debug APK not found!"
-            exit 1
-          fi
           if [ ! -f "app/build/outputs/apk/release/app-release.apk" ]; then
             echo "ERROR: Release APK not found!"
             exit 1
@@ -58,12 +48,10 @@ jobs:
           echo "version=$VERSION_NAME" >> $GITHUB_OUTPUT
           echo "date=$(date +'%Y%m%d')" >> $GITHUB_OUTPUT
 
-      - name: Rename APK files
+      - name: Rename APK file
         run: |
           VERSION="${{ steps.version.outputs.version }}"
-          DATE="${{ steps.version.outputs.date }}"
-          cp app/build/outputs/apk/debug/app-debug.apk "EmulatorGameFormatConverter-v${VERSION}-debug.apk"
-          cp app/build/outputs/apk/release/app-release.apk "EmulatorGameFormatConverter-v${VERSION}-release.apk"
+          cp app/build/outputs/apk/release/app-release.apk "EmulatorGameFormatConverter-v${VERSION}.apk"
 
       - name: Delete previous release
         continue-on-error: true
@@ -79,20 +67,14 @@ jobs:
           tag_name: latest
           name: "v${{ steps.version.outputs.version }} (${{ steps.version.outputs.date }})"
           body: |
-            ## 🎮 模拟器游戏格式转换器 / Emulator Game Format Converter
-
-            **版本**: v${{ steps.version.outputs.version }}
-            **构建日期**: ${{ steps.version.outputs.date }}
-
-            ### 下载说明
-            - **release 版**: 经过代码混淆优化，体积更小，推荐日常使用
-            - **debug 版**: 包含调试信息，出现问题方便排查
+            ## 🎮 PSP游戏格式转换器 v${{ steps.version.outputs.version }}
 
             ### 更新内容
-            请查看下方 Commit 记录
+            - 优化UI布局，修复进度条显示问题
+            - 设置页新增「使用说明」和「关于」按钮
+            - 改善交互体验
           files: |
-            EmulatorGameFormatConverter-v${{ steps.version.outputs.version }}-debug.apk
-            EmulatorGameFormatConverter-v${{ steps.version.outputs.version }}-release.apk
+            EmulatorGameFormatConverter-v${{ steps.version.outputs.version }}.apk
           draft: false
           prerelease: false
         env:
